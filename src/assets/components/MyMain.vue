@@ -1,58 +1,31 @@
 <template>
   <main>
-   <div class="container">
-  <div class="row align-items-start">
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-  </div>
-  <div class="row align-items-center">
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-  </div>
-  <div class="row align-items-end">
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-    <div class="col">
-      
-    </div>
-  </div>
-</div>
+
+      <div class="container">
+
+        <div class="row gx-4 justify-content-center">
+
+            <div class="col-lg-2 col-md-12 personal" v-for="(cd, index) in listaCd" :key="index">
+              <img :src="cd.poster">
+              <h3>{{cd.title}}</h3>
+              <p>{{cd.author}}</p>
+              <p>{{cd.year}}</p>
+            </div>
+
+        </div>
+
+        <!--Seconda Row-->
+
+        <div class="row gx-4 justify-content-center">
+
+            <div class="col-lg-2 col-md-12 personal">
+
+            </div>
+
+        </div>
+
+      </div>
+
   </main>
 </template>
 
@@ -69,18 +42,18 @@ export default {
   },
   methods: {
     getAlbums() {
-        // Make a request for a user with a given ID
+        
         axios.get('https://flynn.boolean.careers/exercises/api/array/music')
         .then((response) => {
           this.listaCd = response.data;
           console.log(response)
         })
         .catch(function (error) {
-        // handle error
+       
           console.log(error);
         })
         .then(function () {
-        // always executed
+     
         });
     }
   },
@@ -97,10 +70,31 @@ export default {
    main {
        height: calc(100vh - 60px);
        background-color: $MainColor;
-       .col {
-         height: 195px;
-         margin: 11.4px;
+       display: flex;
+       align-items: center;
+
+       .personal{
          background-color: $HeaderColor;
+         height: 250px;
+         width: 150px;
+         margin: 20px 15px;
+         display: flex;
+         align-items: center;
+         flex-direction: column;
+           img {
+             height: 120px;
+             margin-top: 15px;
+           }
+           h3 {
+             color: white;
+             font-size: 16px;
+             margin-top: 10px;
+           }
+           p {
+             font-size: 12px;
+             color: lightgrey;
+             font-weight: 600;
+           }
        }
    }
 

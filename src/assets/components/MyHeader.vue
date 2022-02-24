@@ -32,7 +32,7 @@ props: {
          h3 {
              font-size: 14px;
              margin: 0;
-             color: $MainColor;
+             color: white;
          }
 
    }
